@@ -1,3 +1,4 @@
+import controllers.BrandController;
 import models.Brand;
 import models.CarModel;
 import models.CarYear;
@@ -7,13 +8,60 @@ public class App {
                 System.out.println("Examen interciclo de Estructuras de Datos");
                 System.out.println("====Configurar studente.env====");
 
+                // CREAR CONTROLLER
+                BrandController controller = new BrandController();
+
+                // CREAR ARREGLO
+                Brand[] brands = createBrands();
+
+                // MOSTRAR ORIGINAL
+                System.out.println("MARCAS ORIGINALES ");
+
+                for (int i = 0; i < brands.length; i++) {
+
+                        System.out.println(
+                                        brands[i].getBrandName()
+                                                        + " -> "
+                                                        + brands[i].getTotalValidYears());
+                }
+
+                // ORDENAR BUBBLE DESC
+                controller.ordenarBubbleDesc(brands);
+
+                // MOSTRAR ORDENADO
+                System.out.println("ORDENADO DESCENDENTE ");
+
+                for (int i = 0; i < brands.length; i++) {
+
+                        System.out.println(
+                                        brands[i].getBrandName()
+                                                        + " -> "
+                                                        + brands[i].getTotalValidYears());
+                }
+
+                // BUSQUEDA BINARIA
+                System.out.println(" BUSQUEDA BINARIA ");
+
+                Brand encontrado =
+                                controller.binarySearchByValidYears(
+                                                brands,
+                                                5,
+                                                false);
+
+                if (encontrado != null) {
+
+                        System.out.println(
+                                        "Marca encontrada: "
+                                                        + encontrado.getBrandName());
+
+                } else {
+
+                        System.out.println("No encontrado");
+                }
+
         }
 
-        /**
-         * Crea un arreglo de marcas de ejemplo para pruebas
-         * 
-         * @return Arreglo de marcas con modelos y años
-         */
+        
         public static Brand[] createBrands() {
                 // ===== HONDA =====
                 CarYear[] civicYears = {

@@ -33,22 +33,31 @@ public class Brand {
   }
   public int getTotalValidYears(){
     int total = 0 ;
+  
+    for ( int  i = 0; i > models.length ;i ++){
+      CarYear[] years = models[i].getYear();
+      for(int j = 0; j < years.length; j++){
+        if (years[j].getIsValid()){
+          total++;
+        }
 
-    for ( int  i = 0; i > models.length ;i ++);{
-      total += models[i]+ getTotalValidYears();
+      }
     }
     return total ;
-  }
-
-   
+  
+ }
 
 
   @Override
   public String toString() {
     return "Brand [brandName=" + brandName + ", models=" + Arrays.toString(models) + "]";
   }
+   
+
 
   
-                    
 
-}
+  
+    }                 
+
+
